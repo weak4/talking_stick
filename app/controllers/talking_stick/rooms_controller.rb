@@ -12,6 +12,11 @@ module TalkingStick
 
     # GET /rooms/1
     def show
+      @auction = Auction.last
+      @game = Game.last
+      @users = @game.tickets.map(&:user)
+
+
       @room.last_used = Time.now
       @room.save
 
